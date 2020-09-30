@@ -75,7 +75,10 @@
     };
 
     $.fn.addTag = function(value,options) {
-        options = jQuery.extend({focus:false,callback:true},options);
+        options = jQuery.extend({
+            focus:false,callback:true
+        },options);
+
         this.each(function() {
             var id = $(this).attr('id');
 
@@ -97,6 +100,14 @@
             }
 
             if (value !='' && skipTag != true) {
+
+                if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onBeforeAddTag']) {
+                    var f = tags_callbacks[id]['onBeforeAddTag'];
+                    if(!f.call(this, value)){
+                        return false;
+                    }
+                }
+
                 $('<span>').addClass('tag').append(
                     $('<span>').text(value).append('&nbsp;&nbsp;'),
                     $('<a>', {
@@ -223,11 +234,12 @@
 
             delimiter[id] = data.delimiter;
 
-            if (settings.onAddTag || settings.onRemoveTag || settings.onChange) {
+            if (settings.onAddTag || settings.onRemoveTag || settings.onChange || settings.onBeforeAddTag) {
                 tags_callbacks[id] = new Array();
                 tags_callbacks[id]['onAddTag'] = settings.onAddTag;
                 tags_callbacks[id]['onRemoveTag'] = settings.onRemoveTag;
                 tags_callbacks[id]['onChange'] = settings.onChange;
+                tags_callbacks[id]['onBeforeAddTag'] = settings.onBeforeAddTag;
             }
 
             var markup = '<div id="'+id+'_tagsinput" class="tagsinput"><div id="'+id+'_addTag">';
