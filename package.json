@@ -2,33 +2,18 @@
   "name": "jQuery-Tags-Input",
   "version": "1.4.0",
   "description": "",
-  "main": "jquery.tagsinput.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xoxco/jQuery-Tags-Input.git"
+    "url": "https://github.com/maito/jQuery-Tags-Input"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xoxco/jQuery-Tags-Input/issues"
+    "url": "https://github.com/maito/jQuery-Tags-Input/issues"
   },
-  "homepage": "https://github.com/xoxco/jQuery-Tags-Input",
+  "homepage": "",
   "devDependencies": {
-    "glob": "^4.3.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-cssmin": "^0.10.0",
-    "grunt-contrib-uglify": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-newer": "^0.8.0",
-    "jit-grunt": "^0.8.0",
-    "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^0.4.0",
-    "grunt-cli": "^0.1.13"
   }
 }
