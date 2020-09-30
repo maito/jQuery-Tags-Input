@@ -93,6 +93,7 @@ option to false.
 	   'interactive':true,
 	   'defaultText':'add a tag',
 	   'onAddTag':callback_function,
+	   'onBeforeAddTag':callback_function,
 	   'onRemoveTag':callback_function,
 	   'onChange' : callback_function,
 	   'delimiter': [',',';'],   // Or a string with a single delimiter. Ex: ';'
