@@ -1,6 +1,6 @@
 /*
 
-    jQuery Tags Input Plugin 1.3.3
+    jQuery Tags Input Plugin 1.5.0
 
     Copyright (c) 2011 XOXCO, Inc
 
@@ -14,8 +14,13 @@
 
 */
 
-(function($) {
-
+(function (factory) {
+    if ((typeof define !== "undefined" && define !== null ? define.amd : void 0) != null) {
+        return define(['jquery'], factory);
+    } else {
+        return factory(jQuery);
+    }
+})(function ($) {
     var delimiter = new Array();
     var tags_callbacks = new Array();
     $.fn.doAutosize = function(o){
@@ -398,4 +403,4 @@
 
         return found;
     }
-})(jQuery);
+});
