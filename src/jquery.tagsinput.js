@@ -139,7 +139,15 @@
     $.fn.removeTag = function(value) {
         value = unescape(value);
         this.each(function() {
+
             var id = $(this).attr('id');
+
+            if (tags_callbacks[id] && tags_callbacks[id]['onBeforeRemoveTag']) {
+                var f = tags_callbacks[id]['onBeforeRemoveTag'];
+                if(!f.call(this, value)){
+                    return false;
+                }
+            }
 
             var old = $(this).val().split(delimiter[id]);
 
@@ -223,12 +231,13 @@
 
             delimiter[id] = data.delimiter;
 
-            if (settings.onAfterAddTag || settings.onAfterRemoveTag || settings.onChange || settings.onBeforeAddTag) {
+            if (settings.onAfterAddTag || settings.onAfterRemoveTag || settings.onChange || settings.onBeforeAddTag || settings.onBeforeRemoveTag) {
                 tags_callbacks[id] = new Array();
                 tags_callbacks[id]['onAfterAddTag'] = settings.onAfterAddTag;
                 tags_callbacks[id]['onAfterRemoveTag'] = settings.onAfterRemoveTag;
                 tags_callbacks[id]['onChange'] = settings.onChange;
                 tags_callbacks[id]['onBeforeAddTag'] = settings.onBeforeAddTag;
+                tags_callbacks[id]['onBeforeRemoveTag'] = settings.onBeforeRemoveTag;
             }
 
             var markup = '<div id="'+id+'_tagsinput" class="tagsinput"><div id="'+id+'_addTag">';

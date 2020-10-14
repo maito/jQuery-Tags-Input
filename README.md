@@ -95,6 +95,7 @@ option to false.
 	   'onAfterAddTag':callback_function,
 	   'onBeforeAddTag':callback_function,
 	   'onAfterRemoveTag':callback_function,
+	   'onBeforeRemoveTag':callback_function,
 	   'onChange' : callback_function,
 	   'delimiter': [',',';'],   // Or a string with a single delimiter. Ex: ';'
 	   'removeWithBackspace' : true,
