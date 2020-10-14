@@ -68,7 +68,7 @@ And you can check if a tag exists using tagExist()...
 	if ($('#tags').tagExist('foo')) { ... }
 
 If additional functionality is required when a tag is added or removed, you may
-specify callback functions via the onAfterAddTag and onRemoveTag parameters.  Both
+specify callback functions via the onAfterAddTag and onAfterRemoveTag parameters.  Both
 functions should accept a single tag as the parameter.
 
 If you do not want to provide a way to add tags, or you would prefer to provide
@@ -94,7 +94,7 @@ option to false.
 	   'defaultText':'add a tag',
 	   'onAfterAddTag':callback_function,
 	   'onBeforeAddTag':callback_function,
-	   'onRemoveTag':callback_function,
+	   'onAfterRemoveTag':callback_function,
 	   'onChange' : callback_function,
 	   'delimiter': [',',';'],   // Or a string with a single delimiter. Ex: ';'
 	   'removeWithBackspace' : true,
