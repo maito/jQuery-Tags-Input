@@ -1,19 +1,3 @@
-/*
-
-    jQuery Tags Input Plugin 1.5.0
-
-    Copyright (c) 2011 XOXCO, Inc
-
-    Documentation for this plugin lives here:
-    http://xoxco.com/clickable/jquery-tags-input
-
-    Licensed under the MIT license:
-    http://www.opensource.org/licenses/mit-license.php
-
-    ben@xoxco.com
-
-*/
-
 (function (factory) {
     if ((typeof define !== "undefined" && define !== null ? define.amd : void 0) != null) {
         return define(['jquery'], factory);
@@ -169,8 +153,8 @@
 
             $.fn.tagsInput.importTags(this,str);
 
-            if (tags_callbacks[id] && tags_callbacks[id]['onRemoveTag']) {
-                var f = tags_callbacks[id]['onRemoveTag'];
+            if (tags_callbacks[id] && tags_callbacks[id]['onAfterRemoveTag']) {
+                var f = tags_callbacks[id]['onAfterRemoveTag'];
                 f.call(this, value);
             }
         });
@@ -239,10 +223,10 @@
 
             delimiter[id] = data.delimiter;
 
-            if (settings.onAddTag || settings.onRemoveTag || settings.onChange || settings.onBeforeAddTag) {
+            if (settings.onAfterAddTag || settings.onAfterRemoveTag || settings.onChange || settings.onBeforeAddTag) {
                 tags_callbacks[id] = new Array();
-                tags_callbacks[id]['onAddTag'] = settings.onAddTag;
-                tags_callbacks[id]['onRemoveTag'] = settings.onRemoveTag;
+                tags_callbacks[id]['onAfterAddTag'] = settings.onAfterAddTag;
+                tags_callbacks[id]['onAfterRemoveTag'] = settings.onAfterRemoveTag;
                 tags_callbacks[id]['onChange'] = settings.onChange;
                 tags_callbacks[id]['onBeforeAddTag'] = settings.onBeforeAddTag;
             }
