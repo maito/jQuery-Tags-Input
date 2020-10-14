@@ -239,9 +239,9 @@
 
             delimiter[id] = data.delimiter;
 
-            if (settings.onAddTag || settings.onAfterRemoveTag || settings.onChange || settings.onBeforeAddTag) {
+            if (settings.onAfterAddTag || settings.onAfterRemoveTag || settings.onChange || settings.onBeforeAddTag) {
                 tags_callbacks[id] = new Array();
-                tags_callbacks[id]['onAddTag'] = settings.onAddTag;
+                tags_callbacks[id]['onAfterAddTag'] = settings.onAfterAddTag;
                 tags_callbacks[id]['onAfterRemoveTag'] = settings.onAfterRemoveTag;
                 tags_callbacks[id]['onChange'] = settings.onChange;
                 tags_callbacks[id]['onBeforeAddTag'] = settings.onBeforeAddTag;
