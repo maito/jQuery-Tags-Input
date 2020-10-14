@@ -135,8 +135,8 @@
 
                 $.fn.tagsInput.updateTagsField(this,tagslist);
 
-                if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
-                    var f = tags_callbacks[id]['onAddTag'];
+                if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAfterAddTag']) {
+                    var f = tags_callbacks[id]['onAfterAddTag'];
                     f.call(this, value);
                 }
 
