@@ -7,99 +7,64 @@ object with its own delete link. The plugin handles
 all the data - your form just sees a comma-delimited
 list of tags!
 
-[Get it from Github](https://github.com/xoxco/jQuery-Tags-Input)
-
 [View Demo](http://xoxco.com/projects/code/tagsinput/)
-
-[Test it yourself using this jsFiddle Demo](http://jsfiddle.net/7aDak/)
 
 Created by [XOXCO](http://xoxco.com)
 
+Updated by [maito](https://twitter.com/maito)
 
 ## Instructions
 
 First, add the Javascript and CSS files to your <head> tag:
 
-	<script src="jquery.tagsinput.js"></script>
-	<link rel="stylesheet" type="text/css" href="jquery.tagsinput.css" />
+```html
+<link rel="stylesheet" type="text/css" href="jquery.tagsinput.css" />
+<script src="jquery.tagsinput.js"></script>
+```
 
 Create a real input in your form that will contain a comma-separated list of
 tags. You can put any default or existing tags in the value attribute, and
 they'll be handled properly.
 
-	<input name="tags" id="tags" value="foo,bar,baz" />
+```html
+<input name="tags" id="tags" value="foo,bar,baz" />
+```
 
-Then, simply call the tagsInput function on any field that should be treated as
-a list of tags.
+Then, simply call the tagsInput function on any field that should be treated as a list of tags.
 
-	$('#tags').tagsInput();
+```javascript
+$('#tags').tagsInput();
+```
 
-If you want to use jQuery.autocomplete, you can pass in a parameter with the
-autocomplete url.
+## Properties
 
-	$('#tags').tagsInput({
-	  autocomplete_url:'http://myserver.com/api/autocomplete'
-	});
 
-If you're using the bassistance jQuery.autocomplete, which takes extra
-parameters, you can also send in options to the autocomplete plugin, as
-described here.
+| Parameter | Type | Default | Description |
+----|----|----|----
+| autocomplete_url | string | undefined | If you want to use jQuery.autocomplete, you can pass in a parameter with the autocomplete url. |
+| autocomplete | object | {selectFirst: false } | If you're using the bassistance jQuery.autocomplete, which takes extra parameters, you can also send in options to the autocomplete plugin, as described here. `autocomplete:{selectFirst:true,width:'100px',autoFill:true}` |
+| height | string | '100px' | tag height |
+| width | string | '300px' | tag width |
+| interactive | bool | true | active or disactive to be interactive |
+| defaultText | string | 'add a tag' | default tag text |
+| removeWithBackspace | bool | true | active or disactive to remove tag with backspace |
+| delimiter | array or string | ',' | delimiter |
+| minChars | number | 0 | min charcters |
+| maxChars | number | undefined | max charcters |
+| placeholderColor | string | '#666666' | placeholder color |
+| onBeforeAddTag | function | undefined | Before adding tag, called this function with tag name. Need to return true or false. If return false, not add tag. |
+| onAfterAddTag | function | undefined | After adding tag, called this function with tag name. |
+| onBeforeRemoveTag | function | undefined | Before removing tag, called this function with tag name. Need to return true or false. If return false, not remove tag. |
+| onAfterRemoveTag | function | undefined | After removing tag, called this function with tag name. |
+| onChange | function | undefined | After add or removing tag, called this function with tag name. |
 
-	$('#tags').tagsInput({
-	  autocomplete_url:'http://myserver.com/api/autocomplete',
-	  autocomplete:{selectFirst:true,width:'100px',autoFill:true}
-	});
 
-You can add and remove tags by calling the addTag() and removeTag() functions.
+## Methods
 
-	$('#tags').addTag('foo');
-	$('#tags').removeTag('bar');
 
-You can import a list of tags using the importTags() function...
-
-	$('#tags').importTags('foo,bar,baz');
-
-You can also use importTags() to reset the tag list...
-
-	$('#tags').importTags('');
-
-And you can check if a tag exists using tagExist()...
-
-	if ($('#tags').tagExist('foo')) { ... }
-
-If additional functionality is required when a tag is added or removed, you may
-specify callback functions via the onAfterAddTag and onAfterRemoveTag parameters.  Both
-functions should accept a single tag as the parameter.
-
-If you do not want to provide a way to add tags, or you would prefer to provide
-an alternate interface for adding tags to the box, you may pass an false into
-the optional 'interactive' parameter. The tags will still be rendered as per
-usual, and the addTag and removeTag functions will operate as expected.
-
-If you want a function to be called every time a tag is updated/deleted, set it
-as the 'onChange' option.
-
-By default, if the cursor is immediately after a tag, hitting backspace will
-delete that tag. If you want to override this, set the 'removeWithBackspace'
-option to false.
-
-## Options
-
-	$(selector).tagsInput({
-	   'autocomplete_url': url_to_autocomplete_api,
-	   'autocomplete': { option: value, option: value},
-	   'height':'100px',
-	   'width':'300px',
-	   'interactive':true,
-	   'defaultText':'add a tag',
-	   'onAfterAddTag':callback_function,
-	   'onBeforeAddTag':callback_function,
-	   'onAfterRemoveTag':callback_function,
-	   'onBeforeRemoveTag':callback_function,
-	   'onChange' : callback_function,
-	   'delimiter': [',',';'],   // Or a string with a single delimiter. Ex: ';'
-	   'removeWithBackspace' : true,
-	   'minChars' : 0,
-	   'maxChars' : 0, // if not provided there is no limit
-	   'placeholderColor' : '#666666'
-	});
+| Method | Arg | Description |
+----|----|----
+| $('#tags').addTag(tagName) | tagName is string | add tag |
+| $('#tags').removeTag(tagName) | tagName is string | remove tag |
+| $('#tags').importTags(tagNames) | tagNames is string | Add tags ex) 'foo,bar,baz'. If reset tags , set `$('#tags').importTags('')` |
+| $('#tags').tagExist(tagName) | tagName is string | check if a tag exists |
