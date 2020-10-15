@@ -45,26 +45,26 @@ $('#tags').tagsInput();
 | autocomplete | object | {selectFirst: false } | If you're using the bassistance jQuery.autocomplete, which takes extra parameters, you can also send in options to the autocomplete plugin, as described here. `autocomplete:{selectFirst:true,width:'100px',autoFill:true}` |
 | height | string | '100px' | tag height |
 | width | string | '300px' | tag width |
-| interactive | bool | true | active or disactive interactive |
+| interactive | bool | true | active or disactive to be interactive |
 | defaultText | string | 'add a tag' | default tag text |
-| removeWithBackspace | bool | true | active or disactive remove tag with backspace |
+| removeWithBackspace | bool | true | active or disactive to remove tag with backspace |
 | delimiter | array or string | ',' | delimiter |
 | minChars | number | 0 | min charcters |
 | maxChars | number | undefined | max charcters |
 | placeholderColor | string | '#666666' | placeholder color |
-| onBeforeAddTag | function | undefined | Before add tag, called this function with tag name. Need to return true or false. If return false, not add tag. |
-| onAfterAddTag | function | undefined | After add tag, called this function with tag name. |
-| onBeforeRemoveTag | function | undefined | Before remove tag, called this function with tag name. Need to return true or false. If return false, not remove tag. |
-| onAfterRemoveTag | function | undefined | After remove tag, called this function with tag name. |
-| onChange | function | undefined | After add or remove tag, called this function with tag name. |
+| onBeforeAddTag | function | undefined | Before adding tag, called this function with tag name. Need to return true or false. If return false, not add tag. |
+| onAfterAddTag | function | undefined | After adding tag, called this function with tag name. |
+| onBeforeRemoveTag | function | undefined | Before removing tag, called this function with tag name. Need to return true or false. If return false, not remove tag. |
+| onAfterRemoveTag | function | undefined | After removing tag, called this function with tag name. |
+| onChange | function | undefined | After add or removing tag, called this function with tag name. |
 
 
 ## Methods
 
 
-| Method | arg | Description |
+| Method | Arg | Description |
 ----|----|----
-| $('#tags').addTag(tagName) | tagName:string | add tag |
-| $('#tags').removeTag(tagName) | tagName:string | remove tag |
-| $('#tags').importTags(tagNames) | tagNames:string | Add tags ex) 'foo,bar,baz'. If reset tags , set `$('#tags').importTags('')` |
-| $('#tags').tagExist(tagName) | tagName:string | check if a tag exists |
+| $('#tags').addTag(tagName) | tagName is string | add tag |
+| $('#tags').removeTag(tagName) | tagName is string | remove tag |
+| $('#tags').importTags(tagNames) | tagNames is string | Add tags ex) 'foo,bar,baz'. If reset tags , set `$('#tags').importTags('')` |
+| $('#tags').tagExist(tagName) | tagName is string | check if a tag exists |
